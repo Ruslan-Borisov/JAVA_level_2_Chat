@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-    private static Socket socket = null;
+    private  Socket socket = null;
     private int serverPort = 8189;
     private List<ClientHendler> clients;
 
@@ -25,18 +25,30 @@ public class Server {
             e.printStackTrace();
         }
     }
+
     public void subscribe(ClientHendler clientHendler){
         clients.add(clientHendler);
 
     }
+
     public void unsubscribe(ClientHendler clientHendler){
         clients.remove(clientHendler);
 
     }
+
     public void broadcastMessage(String message) throws IOException {
        for(ClientHendler clientHendler: clients){
            clientHendler.sendMessage(message);
        }
+    }
+
+    public boolean isNickBusy(String nickName){
+        for(ClientHendler clientHendler: clients){
+            if(clientHendler.getUserName().equals(nickName)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

@@ -29,7 +29,7 @@ public class Controller  {
 
     @FXML
     HBox loginPanel, msgPanel;
-    
+
     public void sendMsg(ActionEvent actionEvent) {
         String msg = msgField.getText() + '\n';
         try {
@@ -79,14 +79,22 @@ public class Controller  {
             try {
                 while(true){
                     String msg = in.readUTF();
-                    if(msg.startsWith("/")){
-                        if(msg.startsWith("/Login_ok ")){
+                        if(msg.startsWith("/login_ok ")){
                             setUserName(msg.split("\\s")[1]);
+                            break;
                         }
-                        continue;
+                    if(msg.startsWith("/login_filed")){
+                        String cause = msg.split("\\s")[1];
+                        msgArea.appendText(cause + '\n');
                     }
-                    msgArea.appendText("" + msg);
                 }
+
+                while (true){
+                    String msg = in.readUTF();
+                    msgArea.appendText(msg);
+                }
+
+
             } catch (IOException exception) {
                 exception.printStackTrace();
             }finally {
@@ -106,7 +114,5 @@ public class Controller  {
             }
         }
     }
-
-
-
+    
 }
