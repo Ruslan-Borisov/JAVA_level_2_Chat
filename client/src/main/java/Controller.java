@@ -101,7 +101,6 @@ public class Controller  {
                 disconnect();
             }
         });dataThread.start();
-
     }
 
     private void disconnect() {
@@ -114,5 +113,5 @@ public class Controller  {
             }
         }
     }
-    
+
 }
