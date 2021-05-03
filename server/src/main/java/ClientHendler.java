@@ -26,8 +26,7 @@ public class ClientHendler {
                             sendMessage("/login_filed");
                             continue;
                         }
-
-                        sendMessage("login_ok " + userName);
+                        sendMessage("/login_ok " + userName);
                         server.subscribe(this);
                         break;
                     }

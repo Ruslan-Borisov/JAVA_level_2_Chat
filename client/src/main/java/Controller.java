@@ -50,6 +50,11 @@ public class Controller  {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Имя пользователя не может быть пустым", ButtonType.OK);
             alert.showAndWait();
         }
+        try {
+            out.writeUTF("/login " + userNameField.getText());
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void  setUserName(String userName){
@@ -83,7 +88,7 @@ public class Controller  {
                             setUserName(msg.split("\\s")[1]);
                             break;
                         }
-                    if(msg.startsWith("/login_filed")){
+                    if(msg.startsWith("/login_filed ")){
                         String cause = msg.split("\\s")[1];
                         msgArea.appendText(cause + '\n');
                     }

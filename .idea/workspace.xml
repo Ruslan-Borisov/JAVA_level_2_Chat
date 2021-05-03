@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/client/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/ClientHendler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ClientHendler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/target/classes/ClientHendler.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/ClientHendler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
