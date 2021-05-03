@@ -6,12 +6,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
 <VBox fx:controller="Controller"
       xmlns:fx="http://javafx.com/fxml" alignment="center">
-       <TextArea VBox.vgrow="ALWAYS" />
+       <TextArea fx:id="msgArea" VBox.vgrow="ALWAYS" editable="false"/>
     <HBox>
-        <TextArea HBox.hgrow="ALWAYS" />
-        <Button text="Button #1" onAction="#btnOneClickAction"/>
+        <TextField fx:id="msgField" HBox.hgrow="ALWAYS" promptText="Ввудите сообщение" />
+        <Button text="Отправить" onAction="#sendMsg"/>
     </HBox>
 
 
