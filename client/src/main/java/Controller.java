@@ -12,12 +12,12 @@ import java.net.Socket;
 
 public class Controller  {
 
-    private static final int CLINT_PORT = 8189;
-    private static final String CLINT_ADDR = "localhost";
+    private  final int CLINT_PORT = 8189;
+    private  final String CLINT_ADDR = "localhost";
     private  String userName;
-    private static Socket socket = null;
-    private static DataInputStream in;
-    private static DataOutputStream out;
+    private  Socket socket ;
+    private  DataInputStream in;
+    private  DataOutputStream out;
 
     @FXML
     TextField msgField, userNameField;
@@ -53,6 +53,7 @@ public class Controller  {
         }
         try {
             out.writeUTF("/login " + userNameField.getText());
+            System.out.println(userNameField.getText());
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -90,7 +91,7 @@ public class Controller  {
                             break;
                         }
                     if(msg.startsWith("/login_filed ")){
-                        String cause = msg.split("\\s")[1];
+                        String cause = msg.split("\\s",2)[1];
                         msgArea.appendText(cause + '\n');
                     }
                 }

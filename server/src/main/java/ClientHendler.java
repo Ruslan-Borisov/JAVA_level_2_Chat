@@ -5,7 +5,7 @@ import java.net.Socket;
 
 public class ClientHendler {
     private Server server;
-    private Socket socket = null;
+    private Socket socket ;
     private DataInputStream in;
     private DataOutputStream out;
     private String userName;
@@ -15,7 +15,6 @@ public class ClientHendler {
         this.server = server;
         in = new DataInputStream(socket.getInputStream());
         out = new DataOutputStream(socket.getOutputStream());
-
         new Thread(() -> {
             try {
                 while (true) {
@@ -23,9 +22,10 @@ public class ClientHendler {
                     if(msg.startsWith("/login ")){
                         String userNameFromLogin = msg.split("\\s")[1];
                         if(server.isUserOnline(userNameFromLogin)){
-                            sendMessage("/login_filed");
+                            sendMessage("/login_filed Такой ник уже существует");
                             continue;
                         }
+                        userName = userNameFromLogin;
                         sendMessage("/login_ok " + userName);
                         server.subscribe(this);
                         break;
@@ -36,6 +36,7 @@ public class ClientHendler {
                     String msg = in.readUTF();
                     if(msg.startsWith("/")){
                         executeCommand(msg);
+                        continue;
                     }
                     server.broadcastMessage(userName + ": " + msg);
 
@@ -79,12 +80,14 @@ public class ClientHendler {
     public void sendMessage(String message){
         try {
             out.writeUTF(message);
+            System.out.println(message);
         } catch (IOException exception) {
             disconnect();
         }
     }
 
     public String getUserName() {
+
         return userName;
     }
 
@@ -93,7 +96,6 @@ public class ClientHendler {
             String[] tokens = cmd.split("\\s",3);
             server.sendPrivatMassage(this, tokens[1], tokens[2]);
             return;
-
         }
     }
 }

@@ -27,27 +27,27 @@ public class Server {
         }
     }
 
-    public void subscribe(ClientHendler clientHendler)  {
+    public synchronized void subscribe(ClientHendler clientHendler)  {
         clients.add(clientHendler);
         broadcastMessage("Клиент с ником: " + clientHendler.getUserName() + " подключился\n");
         broadcastClientList();
 
     }
 
-    public void unsubscribe(ClientHendler clientHendler)  {
+    public synchronized void unsubscribe(ClientHendler clientHendler)  {
         clients.remove(clientHendler);
         broadcastMessage("Клиент с ником: " + clientHendler.getUserName() + " oтключился\n");
         broadcastClientList();
 
     }
 
-    public void broadcastMessage(String message)  {
+    public synchronized void broadcastMessage(String message)  {
        for(ClientHendler clientHendler: clients){
            clientHendler.sendMessage(message);
        }
     }
 
-    public boolean isUserOnline(String nickName){
+    public synchronized boolean isUserOnline(String nickName){
         for(ClientHendler clientHendler: clients){
             if(clientHendler.getUserName().equals(nickName)){
                 return true;
@@ -56,7 +56,7 @@ public class Server {
         return false;
     }
 
-  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) {
+  public synchronized void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) {
     for(ClientHendler client: clients){
         if(client.getUserName().equals(receiverUserName)){
             client.sendMessage("От: " + sender.getUserName() + " Сообщение: " + message);
@@ -67,7 +67,7 @@ public class Server {
      sender.sendMessage("невозможно отправить сообщение пользователю");
   }
 
-  private void broadcastClientList()  {
+  private  void broadcastClientList()  {
         StringBuilder stringBuilder = new StringBuilder("/clients_list ");
         for(ClientHendler client: clients){
             stringBuilder.append(client.getUserName()).append(" ");
