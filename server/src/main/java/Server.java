@@ -50,6 +50,8 @@ public class Server {
         }
         return false;
     }
-
+  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message){
+ // не успеваю, сегодня доделая
+  }
 
 }
