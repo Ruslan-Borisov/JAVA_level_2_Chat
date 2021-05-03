@@ -29,10 +29,7 @@ public class Controller  {
 
     @FXML
     HBox loginPanel, msgPanel;
-
-
-
-
+    
     public void sendMsg(ActionEvent actionEvent) {
         String msg = msgField.getText() + '\n';
         try {
