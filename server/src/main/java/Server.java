@@ -3,6 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class Server {
     private  Socket socket = null;
@@ -42,7 +43,7 @@ public class Server {
        }
     }
 
-    public boolean isNickBusy(String nickName){
+    public boolean isUserOnline(String nickName){
         for(ClientHendler clientHendler: clients){
             if(clientHendler.getUserName().equals(nickName)){
                 return true;
@@ -50,8 +51,17 @@ public class Server {
         }
         return false;
     }
-  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message){
- // не успеваю, сегодня доделая
+  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) throws IOException {
+    for(ClientHendler client: clients){
+        if(client.getUserName().equals(receiverUserName)){
+            client.sendMessage("От: " + sender.getUserName() + " Сообщение: " + message);
+            sender.sendMessage("Пользователю: " + receiverUserName +" Сообщение: " + message);
+            return;
+        }
+    }
+     sender.sendMessage("невозможно отправить сообщение пользователю");
+
+
   }
 
 }

@@ -22,7 +22,7 @@ public class ClientHendler {
                     String msg = in.readUTF();
                     if(msg.startsWith("/login ")){
                         String userNameFromLogin = msg.split("\\s")[1];
-                        if(server.isNickBusy(userNameFromLogin)){
+                        if(server.isUserOnline(userNameFromLogin)){
                             sendMessage("/login_filed");
                             continue;
                         }
@@ -34,8 +34,11 @@ public class ClientHendler {
 
                 while (true) {
                     String msg = in.readUTF();
-                    out.writeUTF(msg);
-                    server.broadcastMessage(msg);
+                    if(msg.startsWith("/")){
+                        executeCommand(msg);
+                    }
+                    server.broadcastMessage(userName + ": " + msg);
+
                 }
             } catch (IOException exception) {
                 exception.printStackTrace();
@@ -79,5 +82,14 @@ public class ClientHendler {
 
     public String getUserName() {
         return userName;
+    }
+
+    private void executeCommand(String cmd) throws IOException {
+        if(cmd.startsWith("/w")){
+            String[] tokens = cmd.split("\\s",3);
+            server.sendPrivatMassage(this, tokens[1], tokens[2]);
+            return;
+
+        }
     }
 }
