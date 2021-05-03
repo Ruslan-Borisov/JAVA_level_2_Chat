@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="667b3c32-c6ea-465e-8776-a2035185eff7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/ServerApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/ClientHendler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/resources/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/target/classes/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/sample.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/ServerApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ServerApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/target/classes/ServerApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/target/classes/ServerApp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -54,7 +55,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="AntRunConfiguration" singleton="false">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="client" />
       <method v="2">
@@ -68,9 +74,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JarApplication" singleton="false">
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ServerApp" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ServerApp" />
       </list>
     </recent_temporary>
