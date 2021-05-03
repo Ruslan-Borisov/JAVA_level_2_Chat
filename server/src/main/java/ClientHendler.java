@@ -88,8 +88,8 @@ public class ClientHendler {
         return userName;
     }
 
-    private void executeCommand(String cmd) throws IOException {
-        if(cmd.startsWith("/w")){
+    private void executeCommand(String cmd) {
+        if(cmd.startsWith("/w ")){
             String[] tokens = cmd.split("\\s",3);
             server.sendPrivatMassage(this, tokens[1], tokens[2]);
             return;

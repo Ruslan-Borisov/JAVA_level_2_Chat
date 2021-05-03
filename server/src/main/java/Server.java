@@ -11,7 +11,7 @@ public class Server {
     private List<ClientHendler> clients;
 
 
-    public Server(int serverPort ) {
+    public Server(int serverPort) {
         this.serverPort = serverPort;
         this.clients = new ArrayList<>();
         try (ServerSocket serverSocket = new ServerSocket(serverPort)) {
@@ -29,17 +29,19 @@ public class Server {
 
     public void subscribe(ClientHendler clientHendler)  {
         clients.add(clientHendler);
+        broadcastMessage("Клиент с ником: " + clientHendler.getUserName() + " подключился\n");
         broadcastClientList();
 
     }
 
     public void unsubscribe(ClientHendler clientHendler)  {
         clients.remove(clientHendler);
+        broadcastMessage("Клиент с ником: " + clientHendler.getUserName() + " oтключился\n");
         broadcastClientList();
 
     }
 
-    public void broadcastMessage(String message) throws IOException {
+    public void broadcastMessage(String message)  {
        for(ClientHendler clientHendler: clients){
            clientHendler.sendMessage(message);
        }
@@ -54,7 +56,7 @@ public class Server {
         return false;
     }
 
-  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) throws IOException {
+  public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) {
     for(ClientHendler client: clients){
         if(client.getUserName().equals(receiverUserName)){
             client.sendMessage("От: " + sender.getUserName() + " Сообщение: " + message);

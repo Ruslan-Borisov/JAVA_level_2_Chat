@@ -1,6 +1,6 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
@@ -8,9 +8,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.ResourceBundle;
+
 
 public class Controller  {
 
@@ -29,6 +27,9 @@ public class Controller  {
 
     @FXML
     HBox loginPanel, msgPanel;
+
+    @FXML
+    ListView<String> clientList;
 
     public void sendMsg(ActionEvent actionEvent) {
         String msg = msgField.getText() + '\n';
@@ -96,6 +97,10 @@ public class Controller  {
 
                 while (true){
                     String msg = in.readUTF();
+                    if(msg.startsWith("/")){
+                        executeCommand(msg);
+                       continue;
+                    }
                     msgArea.appendText(msg);
                 }
 
@@ -106,8 +111,21 @@ public class Controller  {
             }
         });dataThread.start();
     }
+    private void executeCommand(String cmd){
+
+        if(cmd.startsWith("/clients_list ")){
+            String[] token = cmd.split("\\s");
+            Platform.runLater(() ->{
+                clientList.getItems().clear();
+                for(int i=1; i<token.length; i++){
+                    clientList.getItems().add(token[i]);
+                }
+            });
+        }
+    }
 
     private void disconnect() {
+
         setUserName(null);
         if(socket !=null){
             try {
@@ -116,6 +134,7 @@ public class Controller  {
                 exception.printStackTrace();
             }
         }
+
     }
 
 }
