@@ -99,7 +99,6 @@ public class Controller  {
                     msgArea.appendText(msg);
                 }
 
-
             } catch (IOException exception) {
                 exception.printStackTrace();
             }finally {

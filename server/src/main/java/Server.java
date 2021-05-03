@@ -3,7 +3,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
+
 
 public class Server {
     private  Socket socket = null;
@@ -27,13 +27,15 @@ public class Server {
         }
     }
 
-    public void subscribe(ClientHendler clientHendler){
+    public void subscribe(ClientHendler clientHendler)  {
         clients.add(clientHendler);
+        broadcastClientList();
 
     }
 
-    public void unsubscribe(ClientHendler clientHendler){
+    public void unsubscribe(ClientHendler clientHendler)  {
         clients.remove(clientHendler);
+        broadcastClientList();
 
     }
 
@@ -51,6 +53,7 @@ public class Server {
         }
         return false;
     }
+
   public void sendPrivatMassage(ClientHendler sender, String receiverUserName, String message) throws IOException {
     for(ClientHendler client: clients){
         if(client.getUserName().equals(receiverUserName)){
@@ -60,7 +63,18 @@ public class Server {
         }
     }
      sender.sendMessage("невозможно отправить сообщение пользователю");
+  }
 
+  private void broadcastClientList()  {
+        StringBuilder stringBuilder = new StringBuilder("/clients_list ");
+        for(ClientHendler client: clients){
+            stringBuilder.append(client.getUserName()).append(" ");
+        }
+        stringBuilder.setLength(stringBuilder.length() -1);
+       String clientList = stringBuilder.toString();
+       for(ClientHendler clientHendler: clients){
+           clientHendler.sendMessage(clientList);
+       }
 
   }
 

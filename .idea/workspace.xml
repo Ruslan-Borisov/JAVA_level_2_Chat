@@ -7,6 +7,10 @@
     <list default="true" id="667b3c32-c6ea-465e-8776-a2035185eff7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main/resources/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/resources/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/target/classes/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/client/target/classes/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/ClientHendler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/ClientHendler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/Server.java" afterDir="false" />
     </list>
@@ -49,7 +53,7 @@
       <recent name="F:\JAVA_LEVEL_2\JAVA_level_2_Chat\client\src\main\java" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ServerApp">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="AntRunConfiguration" singleton="false">
       <method v="2">
         <option name="Make" enabled="true" />

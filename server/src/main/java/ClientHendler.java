@@ -76,8 +76,12 @@ public class ClientHendler {
         }
     }
 
-    public void sendMessage(String message) throws IOException {
-        out.writeUTF(message);
+    public void sendMessage(String message){
+        try {
+            out.writeUTF(message);
+        } catch (IOException exception) {
+            disconnect();
+        }
     }
 
     public String getUserName() {
